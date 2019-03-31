@@ -1,7 +1,7 @@
 {
   "name": "node-abort-controller",
   "version": "1.0.0",
-  "description": "AbortController for Node",
+  "description": "AbortController for Node based on EventEmitter",
   "main": "index.js",
   "browser": "browser.js",
   "scripts": {
@@ -11,8 +11,13 @@
     "type": "git",
     "url": "git+https://github.com/southpolesteve/node-abort-controller.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "AbortController",
+    "AbortSignal",
+    "fetch",
+    "polyfill"
+  ],
+  "author": "Steve Faulkner <southpolesteve@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/southpolesteve/node-abort-controller/issues"
