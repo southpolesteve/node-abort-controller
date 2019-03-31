@@ -1,4 +1,4 @@
-const { AbortController } = require('../index.js')
+const AbortController = require('../index.js')
 const fetch = require('node-fetch')
 
 describe('node-fetch', function() {
