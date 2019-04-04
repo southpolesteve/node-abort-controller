@@ -12,7 +12,7 @@ class AbortSignal {
     return 'AbortSignal'
   }
   removeEventListener(name, handler) {
-    this.eventEmitter.off(name, handler)
+    this.eventEmitter.removeListener(name, handler)
   }
   addEventListener(name, handler) {
     this.eventEmitter.on(name, handler)
