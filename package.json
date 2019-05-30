@@ -1,6 +1,6 @@
 {
   "name": "node-abort-controller",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "AbortController for Node based on EventEmitter",
   "main": "index.js",
   "browser": "browser.js",
