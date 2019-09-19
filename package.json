@@ -24,8 +24,8 @@
   },
   "homepage": "https://github.com/southpolesteve/node-abort-controller#readme",
   "devDependencies": {
-    "jest": "24.5.0",
-    "node-fetch": "2.3.0",
+    "jest": "24.9.0",
+    "node-fetch": "2.6.0",
     "whatwg-fetch": "3.0.0"
   }
 }
