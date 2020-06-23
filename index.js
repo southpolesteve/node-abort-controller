@@ -17,6 +17,14 @@ class AbortSignal {
   addEventListener(name, handler) {
     this.eventEmitter.on(name, handler)
   }
+  dispatchEvent(type) {
+    const event = { type, target: this }
+
+    if (typeof this.signal.onabort === 'function')
+      this.signal.onabort(event)
+
+    this.eventEmitter.emit(type, event)
+  }  
 }
 class AbortController {
   constructor() {
@@ -27,7 +35,7 @@ class AbortController {
       return
     
     this.signal.aborted = true
-    this.signal.eventEmitter.emit('abort')
+    this.signal.dispatchEvent('abort')
   }
   toString() {
     return '[object AbortController]'
