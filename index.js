@@ -23,6 +23,9 @@ class AbortController {
     this.signal = new AbortSignal()
   }
   abort() {
+    if (this.signal.aborted)
+      return
+    
     this.signal.aborted = true
     this.signal.eventEmitter.emit('abort')
   }
