@@ -20,9 +20,10 @@ class AbortSignal {
   }
   dispatchEvent(type) {
     const event = { type, target: this }
-
-    if (typeof this.onabort === 'function')
-      this.onabort(event)
+    const handlerName = `on${type}`;
+    
+    if (typeof this[handlerName] === 'function')
+      this[handlerName](event)
 
     this.eventEmitter.emit(type, event)
   }  
