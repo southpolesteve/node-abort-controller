@@ -3,6 +3,7 @@ const { EventEmitter } = require('events')
 class AbortSignal {
   constructor() {
     this.eventEmitter = new EventEmitter()
+    this.onabort = null
     this.aborted = false
   }
   toString() {
@@ -20,8 +21,8 @@ class AbortSignal {
   dispatchEvent(type) {
     const event = { type, target: this }
 
-    if (typeof this.signal.onabort === 'function')
-      this.signal.onabort(event)
+    if (typeof this.onabort === 'function')
+      this.onabort(event)
 
     this.eventEmitter.emit(type, event)
   }  
