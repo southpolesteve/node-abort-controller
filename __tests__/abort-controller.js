@@ -7,12 +7,14 @@ describe('AbortController', function() {
     const handler = jest.fn()
 
     expect(signal.onabort).toBeNull()
+    expect(signal.aborted).toBe(false)
 
     signal.onabort = jest.fn()
     signal.addEventListener('abort', handler)
 
     controller.abort()
 
+    expect(signal.aborted).toBe(true)
     expect(handler).toBeCalledTimes(1)
     expect(handler).toBeCalledWith({ type: 'abort', target: signal })
     expect(signal.onabort).toBeCalledTimes(1)
@@ -21,6 +23,7 @@ describe('AbortController', function() {
     jest.clearAllMocks()
     controller.abort()
 
+    expect(signal.aborted).toBe(true)
     expect(handler).not.toBeCalled()
     expect(signal.onabort).not.toBeCalled()
   })
