@@ -21,12 +21,12 @@ class AbortSignal {
   dispatchEvent(type) {
     const event = { type, target: this }
     const handlerName = `on${type}`;
-    
+
     if (typeof this[handlerName] === 'function')
       this[handlerName](event)
 
     this.eventEmitter.emit(type, event)
-  }  
+  }
 }
 class AbortController {
   constructor() {
@@ -35,7 +35,7 @@ class AbortController {
   abort() {
     if (this.signal.aborted)
       return
-    
+
     this.signal.aborted = true
     this.signal.dispatchEvent('abort')
   }
@@ -49,3 +49,4 @@ class AbortController {
 
 module.exports = AbortController
 module.exports.default = AbortController
+module.exports.AbortSignal = AbortSignal;

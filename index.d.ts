@@ -1,9 +1,9 @@
 // `AbortSignal`,`AbortController` are defined here to prevent a dependency on the `dom` library which disagrees with node runtime.
-// The definiction for `AbortSignal` is taken from @types/node-fetch (https://github.com/DefinitelyTyped/DefinitelyTyped) for 
-// maximal compatabilty with node-fetch.
+// The definition for `AbortSignal` is taken from @types/node-fetch (https://github.com/DefinitelyTyped/DefinitelyTyped) for
+// maximal compatibility with node-fetch.
 // Original node-fetch definitions are under MIT License.
 
-export interface AbortSignal {
+export class AbortSignal {
     aborted: boolean;
 
     addEventListener: (type: "abort", listener: ((this: AbortSignal, event: any) => any), options?: boolean | {
