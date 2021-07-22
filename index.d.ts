@@ -21,7 +21,7 @@ export class AbortSignal {
     onabort: null | ((this: AbortSignal, event: any) => void);
 }
 
-export default class AbortController {
+export = class AbortController {
 	signal:AbortSignal;
 	abort() :void;
 }
