@@ -1,6 +1,6 @@
 {
   "name": "node-abort-controller",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "AbortController for Node based on EventEmitter",
   "main": "index.js",
   "browser": "browser.js",
@@ -24,8 +24,11 @@
   },
   "homepage": "https://github.com/southpolesteve/node-abort-controller#readme",
   "devDependencies": {
-    "jest": "^26.1.0",
-    "node-fetch": "2.6.0",
-    "whatwg-fetch": "3.0.0"
+    "jest": "^27.0.6",
+    "node-fetch": "^2.6.1",
+    "whatwg-fetch": "^3.6.2"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   }
 }

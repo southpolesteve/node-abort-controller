@@ -1,52 +1,48 @@
-const { EventEmitter } = require('events')
+const { EventEmitter } = require("events");
 
 class AbortSignal {
   constructor() {
-    this.eventEmitter = new EventEmitter()
-    this.onabort = null
-    this.aborted = false
+    this.eventEmitter = new EventEmitter();
+    this.onabort = null;
+    this.aborted = false;
   }
   toString() {
-    return '[object AbortSignal]'
+    return "[object AbortSignal]";
   }
   get [Symbol.toStringTag]() {
-    return 'AbortSignal'
+    return "AbortSignal";
   }
   removeEventListener(name, handler) {
-    this.eventEmitter.removeListener(name, handler)
+    this.eventEmitter.removeListener(name, handler);
   }
   addEventListener(name, handler) {
-    this.eventEmitter.on(name, handler)
+    this.eventEmitter.on(name, handler);
   }
   dispatchEvent(type) {
-    const event = { type, target: this }
+    const event = { type, target: this };
     const handlerName = `on${type}`;
 
-    if (typeof this[handlerName] === 'function')
-      this[handlerName](event)
+    if (typeof this[handlerName] === "function") this[handlerName](event);
 
-    this.eventEmitter.emit(type, event)
+    this.eventEmitter.emit(type, event);
   }
 }
 class AbortController {
   constructor() {
-    this.signal = new AbortSignal()
+    this.signal = new AbortSignal();
   }
   abort() {
-    if (this.signal.aborted)
-      return
+    if (this.signal.aborted) return;
 
-    this.signal.aborted = true
-    this.signal.dispatchEvent('abort')
+    this.signal.aborted = true;
+    this.signal.dispatchEvent("abort");
   }
   toString() {
-    return '[object AbortController]'
+    return "[object AbortController]";
   }
   get [Symbol.toStringTag]() {
-    return 'AbortController'
+    return "AbortController";
   }
 }
 
-module.exports = AbortController
-module.exports.default = AbortController
-module.exports.AbortSignal = AbortSignal;
+module.exports = { AbortController, AbortSignal };

@@ -4,25 +4,36 @@
 // Original node-fetch definitions are under MIT License.
 
 export class AbortSignal {
-    aborted: boolean;
+  aborted: boolean;
 
-    addEventListener: (type: "abort", listener: ((this: AbortSignal, event: any) => any), options?: boolean | {
-        capture?: boolean,
-        once?: boolean,
-        passive?: boolean
-    }) => void;
+  addEventListener: (
+    type: "abort",
+    listener: (this: AbortSignal, event: any) => any,
+    options?:
+      | boolean
+      | {
+          capture?: boolean;
+          once?: boolean;
+          passive?: boolean;
+        }
+  ) => void;
 
-    removeEventListener: (type: "abort", listener: ((this: AbortSignal, event: any) => any), options?: boolean | {
-        capture?: boolean
-    }) => void;
+  removeEventListener: (
+    type: "abort",
+    listener: (this: AbortSignal, event: any) => any,
+    options?:
+      | boolean
+      | {
+          capture?: boolean;
+        }
+  ) => void;
 
-    dispatchEvent: (event: any) => boolean;
+  dispatchEvent: (event: any) => boolean;
 
-    onabort: null | ((this: AbortSignal, event: any) => void);
+  onabort: null | ((this: AbortSignal, event: any) => void);
 }
 
-export default class AbortController {
-	signal:AbortSignal;
-	abort() :void;
+export class AbortController {
+  signal: AbortSignal;
+  abort(): void;
 }
-
