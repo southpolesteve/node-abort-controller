@@ -27,5 +27,8 @@
     "jest": "^27.0.6",
     "node-fetch": "^2.6.1",
     "whatwg-fetch": "^3.6.2"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   }
 }
