@@ -1,6 +1,6 @@
 # 3.0.0
 
-Removes default exports for AbortController. You must now import the `AbortController` object explicitly.This is a breaking change for some users relying on default exports. Upgrading to 3.0 is a one line change:
+Removes default exports for AbortController. You must now import the `AbortController` object explicitly. This is a breaking change for some users relying on default exports. Upgrading to 3.0 is a one line change:
 
 ```js
 // ES Modules Users
@@ -17,6 +17,11 @@ const AbortController = require("node-abort-controller");
 // v3
 const { AbortController } = require("node-abort-controller");
 ```
+
+Other changes:
+
+- Fix typos in docs
+- Update all dev dependencies to resolve deprecation warnings
 
 # 2.0.0
 
