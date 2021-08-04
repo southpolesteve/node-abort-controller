@@ -20,7 +20,7 @@ const { AbortController } = require("node-abort-controller");
 
 # 2.0.0
 
-- Export AbortController class. This is a non-breaking change for JavaScript users and almost surely a non-breaking change for TypeScript users but we are doing a major version bump to be safe.
+- Export AbortSignal class. This is a non-breaking change for JavaScript users and almost surely a non-breaking change for TypeScript users but we are doing a major version bump to be safe.
 
 # 1.2.0
 
