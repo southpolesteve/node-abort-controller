@@ -19,10 +19,10 @@ await fetch('https:/www.google.com', { signal });
 setTimeout(() => controller.abort(), 500);
 ```
 
-## Examples
+## Example
 Abort request if server isn't responding more than 5 seconds
 ```javascript
-import AbortController from 'node-abort-controller';
+import { AbortController } from 'node-abort-controller';
 import fetch from 'node-fetch';
 
 const doFetch = async (url = '') => {
