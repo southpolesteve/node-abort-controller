@@ -46,3 +46,4 @@ class AbortController {
 }
 
 module.exports = { AbortController, AbortSignal };
+module.exports.default = AbortController;
