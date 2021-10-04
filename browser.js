@@ -19,6 +19,4 @@ if (!_global.AbortController) {
   )
 }
 
-module.exports = _global.AbortController
 module.exports.AbortController = _global.AbortController
-module.exports.default = _global.AbortController
