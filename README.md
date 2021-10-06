@@ -4,7 +4,7 @@ AbortController Polyfill for Node.JS based on EventEmitter
 
 [![Build Status](https://dev.azure.com/stfaul/node-abort-controller/_apis/build/status/southpolesteve.node-abort-controller?branchName=master)](https://dev.azure.com/stfaul/node-abort-controller/_build/latest?definitionId=3&branchName=master)
 
-## Usage
+## Example Usage
 
 ### Timing out `fetch`
 
@@ -22,8 +22,6 @@ setTimeout(() => controller.abort(), 500);
 ```
 
 ### Re-usable `fetch` function with a built in timeout
-
-Abort request if server isn't responding more than 5 seconds
 
 ```javascript
 import { AbortController } from "node-abort-controller";
@@ -47,7 +45,7 @@ const fetchWithTimeout = async (url = "") => {
 };
 ```
 
-## Why would I use this?
+## Why would I need this?
 
 You might not need to! Generally speaking, there are three environments your JavaScript code can run in:
 
@@ -64,23 +62,23 @@ In practice, this is hard. Tooling such as webpack and browserify are great at m
 
 If you are building a ...
 
-#### Application running in modern browsers:
+#### Application running in modern browsers
 
 Congrats! You don't need a library or polyfill at all! Close this tab. Uninstall this package.
 
-#### Application running in modern browsers AND node (such as a server side rendered JS app):
+#### Application running in modern browsers AND node (such as a server side rendered JS app)
 
 Use _this package_ and [node-fetch](https://www.npmjs.com/package/node-fetch). It is minimally what you need.
 
-#### Application supporting legacy browsers AND NOT node:
+#### Application supporting legacy browsers AND NOT node
 
 Use [abort-controller](https://www.npmjs.com/package/abort-controller) and [whatwg-fetch](https://www.npmjs.com/package/whatwg-fetch). These are more complete polyfills that will work in all browser environments.
 
-#### Application supporting legacy browsers AND node:
+#### Application supporting legacy browsers AND node
 
 Use [abort-controller](https://www.npmjs.com/package/abort-controller) and [cross-fetch](https://www.npmjs.com/package/cross-fetch). Same as above, except cross-fetch will polyfill correctly in both the browser and node.js
 
-#### Library being consumed by other applications and using `fetch` internally:
+#### Library being consumed by other applications and using `fetch` internally
 
 Use _this package_ and [node-fetch](https://www.npmjs.com/package/node-fetch). It is the smallest and least opinionated combination for your end users. Application developers targeting Internet Exploer will need to polyfill `AbortController` and `fetch` on their own. But your library won't be forcing unecessary polyfills on developers who only target modern browsers.
 
