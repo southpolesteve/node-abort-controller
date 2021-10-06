@@ -6,17 +6,45 @@ AbortController Polyfill for Node.JS based on EventEmitter
 
 ## Usage
 
-```js
-import fetch from "node-fetch";
-import { AbortController } from "node-abort-controller";
+```javascript
+import fetch from 'node-fetch';
+import { AbortController } from 'node-abort-controller';
 
 const controller = new AbortController();
 const signal = controller.signal;
 
-await fetch("https:/www.google.com", { signal });
+await fetch('https:/www.google.com', { signal });
 
 // Abort after 500ms. Effectively a timeout
 setTimeout(() => controller.abort(), 500);
+```
+
+## Example
+Abort request if server isn't responding more than 5 seconds
+```javascript
+import { AbortController } from 'node-abort-controller';
+import fetch from 'node-fetch';
+
+const doFetch = async (url = '') => {
+  const controller = new AbortController();
+  const { signal } = controller;
+
+  const timeout = setTimeout(() => {
+    controller.abort();
+  }, 5000);
+
+  try {
+    const req = await fetch(url, { signal });
+
+    clearTimeout(timeout);
+
+    const res = await req.json();
+
+    return res;
+  } catch (e) {
+    return null;
+  }
+};
 ```
 
 ## Why would I use this?
