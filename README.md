@@ -62,7 +62,7 @@ In practice, this is hard. Tooling such as webpack and browserify are great at m
 
 If you are building a ...
 
-#### NodeJS library supporting that only works with Node 16 or above
+#### NodeJS library only supports Node 16 or above
 
 You don't need this library! [`AbortController` is now built into nodeJS ](https://nodejs.org/api/globals.html#globals_class_abortcontroller). Use that instead.
 
