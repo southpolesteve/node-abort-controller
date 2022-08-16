@@ -5,6 +5,7 @@
 
 export class AbortSignal {
   aborted: boolean;
+  reason?: any;
 
   addEventListener: (
     type: "abort",
@@ -31,9 +32,16 @@ export class AbortSignal {
   dispatchEvent: (event: any) => boolean;
 
   onabort: null | ((this: AbortSignal, event: any) => void);
+
+  throwIfAborted(): void;
+
+  static abort(reason?: any): AbortSignal;
+
+  static timeout(time: number): AbortSignal;
 }
 
 export class AbortController {
   signal: AbortSignal;
-  abort(): void;
+
+  abort(reason?: any): void;
 }
