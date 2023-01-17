@@ -1,10 +1,8 @@
 # node-abort-controller
 
-AbortController Polyfill for Node.JS based on EventEmitter for Node v14 and below.
+AbortController Polyfill for Node.JS based on EventEmitter for Node v14.6.x and below.
 
-Are you using Node 16 or above? You don't need this! [Node has `AbortController` and `AbortSignal` as builtin globals](https://nodejs.org/dist/latest-v16.x/docs/api/globals.html#class-abortcontroller)
-
-[![Build Status](https://dev.azure.com/stfaul/node-abort-controller/_apis/build/status/southpolesteve.node-abort-controller?branchName=master)](https://dev.azure.com/stfaul/node-abort-controller/_build/latest?definitionId=3&branchName=master)
+Are you using Node 14.7.0 or above? You don't need this! [Node has `AbortController` and `AbortSignal` as builtin globals](https://nodejs.org/dist/latest/docs/api/globals.html#globals_class_abortcontroller). In Node versions >=14.7.0 and <15.4.0 you can access the experimental implementation using `--experimental-abortcontroller`.
 
 ## Example Usage
 
