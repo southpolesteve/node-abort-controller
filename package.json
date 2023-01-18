@@ -32,6 +32,6 @@
     "testEnvironment": "jsdom"
   },
   "engines": {
-    "node": "14.x"
+    "node": "<14.7"
   }
 }
