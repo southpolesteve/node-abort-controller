@@ -1,4 +1,4 @@
-const { AbortController } = require("../index.js");
+const { AbortController, AbortSignal } = require("../index.js");
 
 describe("AbortSignal", function () {
   it("should implement EventTarget", function () {
@@ -36,5 +36,37 @@ describe("AbortSignal", function () {
     expect(unusedHandler).not.toBeCalled();
     expect(handler).not.toBeCalled();
     expect(signal.onabort).not.toBeCalled();
+  });
+
+  it("should implement throwIfAborted", function () {
+    const controller = new AbortController();
+    const signal = controller.signal;
+    expect(() => signal.throwIfAborted()).not.toThrowError();
+    controller.abort();
+    expect(() => signal.throwIfAborted()).toThrowError(new Error("AbortError"));
+  });
+});
+
+describe("Static methods", () => {
+  jest.useFakeTimers();
+  jest.spyOn(global, "setTimeout");
+
+  it("should implement abort", function () {
+    const signal = AbortSignal.abort();
+    expect(signal.aborted).toBe(true);
+    expect(signal.reason).toEqual(new Error("AbortError"));
+  });
+
+  it("should implement timeout", function () {
+    const signal = AbortSignal.timeout(1000);
+    expect(setTimeout).toHaveBeenCalledTimes(1);
+    expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 1000);
+    expect(signal.aborted).toBe(false);
+    expect(signal.reason).toBeUndefined();
+
+    jest.runAllTimers();
+
+    expect(signal.aborted).toBe(true);
+    expect(signal.reason).toEqual(new Error("TimeoutError"));
   });
 });
