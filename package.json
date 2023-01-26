@@ -30,8 +30,5 @@
   },
   "jest": {
     "testEnvironment": "jsdom"
-  },
-  "engines": {
-    "node": "<14.7.0"
   }
 }
